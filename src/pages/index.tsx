@@ -2,9 +2,7 @@ import { graphql, PageProps } from "gatsby";
 import * as React from "react";
 import About from "../compenents/sections/about";
 
-const IndexPage: React.FC<PageProps<GatsbyTypes.IndexPageQuery>> = ({
-  data,
-}) => {
+const IndexPage: React.FC<PageProps<GatsbyTypes.IndexPageQuery>> = ({ data }) => {
   return (
     <div>
       ${JSON.stringify(data)}
