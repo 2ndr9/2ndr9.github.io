@@ -6,7 +6,7 @@ import "../styles/global.css";
 const Header = () => {
   const { menu } = config.navLinks;
   return (
-    <header>
+    <header className="border-b-2">
       <nav className="flex justify-center my-8">
         {menu.map(({ name, url }, key) => {
           return (

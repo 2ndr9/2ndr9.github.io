@@ -1,7 +1,8 @@
 import React from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Section from "./common";
 
 const About = () => {
   const data = useStaticQuery<GatsbyTypes.AboutSectionQuery>(graphql`
@@ -11,6 +12,7 @@ const About = () => {
         frontmatter {
           title
           bgColor
+          sectionID
           image {
             childImageSharp {
               gatsbyImageData(blurredOptions: {}, width: 250)
@@ -25,15 +27,14 @@ const About = () => {
   const gatsbyImageData = data.mdx!.frontmatter!.image!.childImageSharp!.gatsbyImageData!;
 
   return (
-    <section className={`text-center ${frontmatter!.bgColor} p-8`} id="about">
-      <h2 className="text-4xl my-3">{frontmatter!.title}</h2>
-      <div className="flex justify-center my-8">
+    <Section bgColor={frontmatter!.bgColor!} sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
+      <div className="flex justify-center">
         <GatsbyImage className="rounded-full mr-40" image={getImage(gatsbyImageData)!} alt="aboutImage" />
         <p className="text-base my-auto">
           <MDXRenderer>{body}</MDXRenderer>
         </p>
       </div>
-    </section>
+    </Section>
   );
 };
 
