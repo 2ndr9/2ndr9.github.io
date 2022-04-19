@@ -6,7 +6,7 @@ import Footer from "./footer";
 
 const Layout: FC = ({ children }) => {
   return (
-    <div className="" id="layout-wrapper">
+    <div className="max-w-screen-lg  m-auto">
       <Header></Header>
       <main id="main-content">{children}</main>
       <Footer></Footer>

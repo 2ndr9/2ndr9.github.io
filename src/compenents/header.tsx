@@ -10,7 +10,7 @@ const Header = () => {
       <nav className="flex justify-center my-8">
         {menu.map(({ name, url }, key) => {
           return (
-            <Link className="text-lg text-center px-4 m-3" key={key} to={url}>
+            <Link className="text-lg px-4 m-3" key={key} to={url}>
               {name}
             </Link>
           );
