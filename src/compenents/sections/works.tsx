@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const About = () => {
   const data = useStaticQuery<GatsbyTypes.AboutPageQuery>(graphql`
-    query AboutPage($id: String) {
+    query WorksPage($id: String) {
       mdx(id: { eq: $id }) {
         frontmatter {
           title

@@ -1,26 +1,13 @@
-import { graphql, PageProps } from "gatsby";
 import * as React from "react";
+import Layout from "../compenents/layout";
 import About from "../compenents/sections/about";
 
-const IndexPage: React.FC<PageProps<GatsbyTypes.IndexPageQuery>> = ({ data }) => {
+const IndexPage = () => {
   return (
-    <div>
-      ${JSON.stringify(data)}
+    <Layout>
       <About></About>;
-    </div>
+    </Layout>
   );
 };
-
-export const query = graphql`
-  query IndexPage($id: String) {
-    mdx(id: { eq: $id }) {
-      frontmatter {
-        seoTitle
-        useSeoTitleSuffix
-        useSplashScreen
-      }
-    }
-  }
-`;
 
 export default IndexPage;

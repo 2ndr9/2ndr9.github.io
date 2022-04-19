@@ -9,6 +9,7 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-mdx",
     `gatsby-transformer-remark`,
+    "gatsby-plugin-postcss",
     {
       resolve: "gatsby-source-filesystem",
       options: {
