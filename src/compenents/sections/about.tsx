@@ -28,12 +28,12 @@ const About = () => {
 
   return (
     <Section bgColor={frontmatter!.bgColor!} sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
-      <div className="flex justify-center">
-        <GatsbyImage className="rounded-full mr-40" image={getImage(gatsbyImageData)!} alt="aboutImage" />
-        <p className="text-base my-auto">
-          <MDXRenderer>{body}</MDXRenderer>
-        </p>
+      <div className="text-center">
+        <GatsbyImage className="rounded-full" image={getImage(gatsbyImageData)!} alt="aboutImage" />
       </div>
+      <p className="my-auto prose prose-base mt-10 min-w-full">
+        <MDXRenderer>{body}</MDXRenderer>
+      </p>
     </Section>
   );
 };

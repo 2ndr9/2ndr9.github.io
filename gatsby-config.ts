@@ -7,9 +7,6 @@ const config: GatsbyConfig = {
     siteUrl: `https://2ndr9.com/github.io/portfolio`,
   },
   plugins: [
-    // gatsby-transformer-remarkというものもあるが，これはmdxには非対応．
-    // また，画像の読み込みができなかった
-    "gatsby-plugin-mdx",
     // tailwind用
     "gatsby-plugin-postcss",
     // grapqhのtype生成
@@ -28,6 +25,22 @@ const config: GatsbyConfig = {
     // gatsyby-imageが非推奨になり，こちらが推奨
     // <GatsbyImage>などが使える
     `gatsby-plugin-image`,
+    {
+      // gatsby-transformer-remarkというものもあるが，これはmdxには非対応．
+      // また，画像の読み込みができなかった
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            // Processes images in markdown so they can be used in the production build.
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
   ],
 };
 
