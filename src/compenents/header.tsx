@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import config from "../../config";
-import "../styles/global.css";
 
 const Header = () => {
   const { menu } = config.navLinks;
