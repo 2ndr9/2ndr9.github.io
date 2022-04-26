@@ -48,7 +48,7 @@ const Works = () => {
         {works.map((work, key) => {
           const { body, frontmatter } = work.node;
           return (
-            <div key={key} className={`border-b-2 m-2 p-3`} style={{ order: frontmatter?.position }}>
+            <div key={key} className={`border-b-2 m-2 p-3 relative pb-14`} style={{ order: frontmatter?.position }}>
               <div className="text-3xl mb-7 text-center">{frontmatter!.title}</div>
               <div className="text-center">
                 <GatsbyImage
@@ -59,7 +59,7 @@ const Works = () => {
               <p className="text-base my-7 prose prose-sm">
                 <MDXRenderer>{body}</MDXRenderer>
               </p>
-              <div className="flex justify-around w-4/12 mx-auto my-7">
+              <div className="flex justify-around w-4/12 mx-auto my-7 absolute bottom-0 left-1/2 -translate-x-1/2 ">
                 {frontmatter!.github && (
                   <a href={frontmatter!.github}>
                     <GithubIcon></GithubIcon>
