@@ -7,7 +7,7 @@ import Section from "./common";
 const About = () => {
   const data = useStaticQuery<GatsbyTypes.AboutSectionQuery>(graphql`
     query AboutSection {
-      mdx(fileAbsolutePath: { regex: "/index/about/about.mdx/" }) {
+      mdx(fileAbsolutePath: { regex: "/sections/about/about.mdx/" }) {
         body
         frontmatter {
           title

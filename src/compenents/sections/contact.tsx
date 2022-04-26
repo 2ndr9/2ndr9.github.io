@@ -6,7 +6,7 @@ import Section from "./common";
 const Contact = () => {
   const data = useStaticQuery<GatsbyTypes.ContactSectionQuery>(graphql`
     query ContactSection {
-      mdx(fileAbsolutePath: { regex: "/index/contact/contact.mdx/" }) {
+      mdx(fileAbsolutePath: { regex: "/sections/contact/contact.mdx/" }) {
         body
         frontmatter {
           title

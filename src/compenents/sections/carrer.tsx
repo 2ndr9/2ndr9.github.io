@@ -6,7 +6,7 @@ import Section from "./common";
 const Carrer = () => {
   const data = useStaticQuery<GatsbyTypes.CarrerSectionQuery>(graphql`
     query CarrerSection {
-      mdx(fileAbsolutePath: { regex: "/index/carrer/carrer.mdx/" }) {
+      mdx(fileAbsolutePath: { regex: "/sections/carrer/carrer.mdx/" }) {
         body
         frontmatter {
           title

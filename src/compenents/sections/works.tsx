@@ -9,7 +9,7 @@ import Section from "./common";
 const Works = () => {
   const data = useStaticQuery<GatsbyTypes.WorksSectionQuery>(graphql`
     query WorksSection {
-      mdx(fileAbsolutePath: { regex: "/index/works/works.mdx/" }) {
+      mdx(fileAbsolutePath: { regex: "/sections/works/works.mdx/" }) {
         frontmatter {
           title
           sectionID

@@ -6,7 +6,7 @@ import Section from "./common";
 const Certification = () => {
   const data = useStaticQuery<GatsbyTypes.CertificationSectionQuery>(graphql`
     query CertificationSection {
-      mdx(fileAbsolutePath: { regex: "/index/certification/certification.mdx/" }) {
+      mdx(fileAbsolutePath: { regex: "/sections/certification/certification.mdx/" }) {
         body
         frontmatter {
           title
