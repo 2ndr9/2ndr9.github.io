@@ -48,7 +48,7 @@ const Works = () => {
         {works.map((work, key) => {
           const { body, frontmatter } = work.node;
           return (
-            <div key={key} className="border-b-2 m-2 p-3">
+            <div key={key} className={`border-b-2 m-2 p-3`} style={{ order: frontmatter?.position }}>
               <div className="text-3xl mb-7 text-center">{frontmatter!.title}</div>
               <div className="text-center">
                 <GatsbyImage
