@@ -4,8 +4,9 @@ import About from "../compenents/sections/about";
 import Carrer from "../compenents/sections/carrer";
 import Works from "../compenents/sections/works";
 import "../../gatsby-browser";
-import Test from "../compenents/sections/test";
 import Skills from "../compenents/sections/skills";
+import Certification from "../compenents/sections/certification";
+import Contact from "../compenents/sections/contact";
 
 const IndexPage = () => {
   return (
@@ -13,8 +14,9 @@ const IndexPage = () => {
       <About></About>
       <Works></Works>
       <Carrer></Carrer>
-      <Test></Test>
       <Skills></Skills>
+      <Certification></Certification>
+      <Contact></Contact>
     </Layout>
   );
 };
