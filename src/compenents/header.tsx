@@ -1,16 +1,31 @@
 import React from "react";
-import { Link } from "gatsby";
-import config from "../../config";
+import { graphql, Link, useStaticQuery } from "gatsby";
 
 const Header = () => {
-  const { menu } = config.navLinks;
+  const data = useStaticQuery<GatsbyTypes.GetSectionTitlesQuery>(graphql`
+    query GetSectionTitles {
+      allMdx(
+        filter: { frontmatter: { sectionID: { regex: "/.*/" } } }
+        sort: { fields: frontmatter___order, order: ASC }
+      ) {
+        nodes {
+          frontmatter {
+            title
+            order
+            sectionID
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <header className="border-b-2">
       <nav className="flex justify-center my-8">
-        {menu.map(({ name, url }, key) => {
+        {data.allMdx.nodes.map((n, key) => {
           return (
-            <Link className="text-lg px-4 m-3" key={key} to={url}>
-              {name}
+            <Link className="text-lg px-4 m-3" key={key} to={`/#${n.frontmatter!.sectionID!}`}>
+              {n.frontmatter!.title}
             </Link>
           );
         })}

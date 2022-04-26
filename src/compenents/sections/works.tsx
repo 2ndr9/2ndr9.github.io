@@ -16,7 +16,7 @@ const Works = () => {
         }
       }
       allMdx(
-        filter: { fileAbsolutePath: { regex: "/index/works/" }, frontmatter: { visible: { eq: true } } }
+        filter: { fileAbsolutePath: { regex: "/sections/works/" }, frontmatter: { visible: { eq: true } } }
         sort: { fields: [frontmatter___position], order: ASC }
       ) {
         edges {
