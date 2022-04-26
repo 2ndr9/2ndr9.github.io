@@ -45,16 +45,22 @@ const Works = () => {
 
   return (
     <Section bgColor={bgColor!} sectionID={sectionID!} title={title}>
-      <div className="flex justify-center">
+      <div className="grid grid-cols-2 grid-rows-none ">
         {works.map((work, key) => {
           const { body, frontmatter } = work.node;
           return (
-            <div key={key}>
-              <div className="text-3xl">{frontmatter!.title}</div>
-              <p className="text-base my-3">
+            <div key={key} className="border-b-2 m-2 p-3">
+              <div className="text-3xl mb-7 text-center">{frontmatter!.title}</div>
+              <div className="text-center">
+                <GatsbyImage
+                  image={getImage(work.node.frontmatter!.image!.childImageSharp!.gatsbyImageData!)!}
+                  alt="aboutImage"
+                />
+              </div>
+              <p className="text-base my-7 prose prose-sm">
                 <MDXRenderer>{body}</MDXRenderer>
               </p>
-              <div className="flex justify-between w-4/12 mx-auto my-3">
+              <div className="flex justify-around w-4/12 mx-auto my-7">
                 {frontmatter!.github && (
                   <a href={frontmatter!.github}>
                     <GithubIcon></GithubIcon>
@@ -66,11 +72,6 @@ const Works = () => {
                   </a>
                 )}
               </div>
-              <GatsbyImage
-                className="my-3"
-                image={getImage(work.node.frontmatter!.image!.childImageSharp!.gatsbyImageData!)!}
-                alt="aboutImage"
-              />
             </div>
           );
         })}
