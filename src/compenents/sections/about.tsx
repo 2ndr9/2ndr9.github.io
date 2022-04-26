@@ -11,7 +11,6 @@ const About = () => {
         body
         frontmatter {
           title
-          bgColor
           sectionID
           image {
             childImageSharp {
@@ -27,7 +26,7 @@ const About = () => {
   const gatsbyImageData = data.mdx!.frontmatter!.image!.childImageSharp!.gatsbyImageData!;
 
   return (
-    <Section bgColor={frontmatter!.bgColor!} sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
+    <Section sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
       <div className="text-center">
         <GatsbyImage className="rounded-full" image={getImage(gatsbyImageData)!} alt="aboutImage" />
       </div>

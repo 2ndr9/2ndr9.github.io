@@ -3,10 +3,10 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, useStaticQuery } from "gatsby";
 import Section from "./common";
 
-const Carrer = () => {
-  const data = useStaticQuery<GatsbyTypes.CarrerSectionQuery>(graphql`
-    query CarrerSection {
-      mdx(fileAbsolutePath: { regex: "/index/carrer/carrer.mdx/" }) {
+const Skills = () => {
+  const data = useStaticQuery<GatsbyTypes.SkillsSectionQuery>(graphql`
+    query SkillsSection {
+      mdx(fileAbsolutePath: { regex: "/index/skills/skills.mdx/" }) {
         body
         frontmatter {
           title
@@ -20,11 +20,11 @@ const Carrer = () => {
 
   return (
     <Section sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
-      <div className="prose prose-base min-w-full">
+      <p className="my-auto prose prose-base mt-10 min-w-full">
         <MDXRenderer>{body}</MDXRenderer>
-      </div>
+      </p>
     </Section>
   );
 };
 
-export default Carrer;
+export default Skills;

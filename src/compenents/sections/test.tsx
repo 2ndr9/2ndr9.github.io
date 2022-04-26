@@ -10,7 +10,6 @@ const Test = () => {
         body
         frontmatter {
           title
-          bgColor
           sectionID
         }
       }
@@ -20,7 +19,7 @@ const Test = () => {
   const { frontmatter, body } = data.mdx!;
 
   return (
-    <Section bgColor={frontmatter!.bgColor!} sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
+    <Section sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
       <p className="my-auto prose prose-base mt-10 min-w-full prose-img:rounded-full">
         <MDXRenderer>{body}</MDXRenderer>
       </p>

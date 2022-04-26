@@ -12,7 +12,6 @@ const Works = () => {
       mdx(fileAbsolutePath: { regex: "/index/works/works.mdx/" }) {
         frontmatter {
           title
-          bgColor
           sectionID
         }
       }
@@ -40,11 +39,11 @@ const Works = () => {
     }
   `);
 
-  const { title, bgColor, sectionID } = data!.mdx!.frontmatter!;
+  const { title, sectionID } = data!.mdx!.frontmatter!;
   const works = data.allMdx.edges;
 
   return (
-    <Section bgColor={bgColor!} sectionID={sectionID!} title={title}>
+    <Section sectionID={sectionID!} title={title}>
       <div className="grid grid-cols-2 grid-rows-none ">
         {works.map((work, key) => {
           const { body, frontmatter } = work.node;
