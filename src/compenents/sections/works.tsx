@@ -59,7 +59,7 @@ const Works = () => {
               <p className="text-base my-7 prose prose-sm">
                 <MDXRenderer>{body}</MDXRenderer>
               </p>
-              <div className="flex justify-around w-4/12 mx-auto my-7 absolute bottom-0 left-1/2 -translate-x-1/2 ">
+              <div className="flex justify-around w-full my-7 absolute bottom-0 left-1/2 -translate-x-1/2 ">
                 {frontmatter!.github && (
                   <a href={frontmatter!.github}>
                     <GithubIcon></GithubIcon>
