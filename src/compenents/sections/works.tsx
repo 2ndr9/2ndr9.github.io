@@ -61,12 +61,13 @@ const Works = () => {
               </p>
               <div className="flex justify-around w-full my-7 absolute bottom-0 left-1/2 -translate-x-1/2 ">
                 {frontmatter!.github && (
-                  <a href={frontmatter!.github}>
+                  <a href={frontmatter!.github} target="_blank" rel="noopener noreferrer">
                     <GithubIcon></GithubIcon>
                   </a>
                 )}
+
                 {frontmatter!.external && (
-                  <a href={frontmatter!.external}>
+                  <a href={frontmatter!.external} target="_blank" rel="noopener noreferrer">
                     <ExternalIcon></ExternalIcon>
                   </a>
                 )}
