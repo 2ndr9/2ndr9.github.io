@@ -3,7 +3,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, useStaticQuery } from "gatsby";
 import GithubIcon from "../icons/github";
 import ExternalIcon from "../icons/external";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, getImageData, IGatsbyImageData } from "gatsby-plugin-image";
 import Section from "./common";
 
 const Works = () => {
@@ -52,7 +52,7 @@ const Works = () => {
               <div className="text-3xl mb-7 text-center">{frontmatter!.title}</div>
               <div className="text-center">
                 <GatsbyImage
-                  image={getImage(work.node.frontmatter!.image!.childImageSharp!.gatsbyImageData!)!}
+                  image={getImage(work.node.frontmatter?.image?.childImageSharp?.gatsbyImageData!)!}
                   alt="aboutImage"
                 />
               </div>
