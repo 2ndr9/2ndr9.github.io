@@ -26,6 +26,7 @@ const config: GatsbyConfig = {
     // gatsyby-imageが非推奨になり，こちらが推奨
     // <GatsbyImage>などが使える
     `gatsby-plugin-image`,
+    `gatsby-remark-images`,
     {
       // gatsby-transformer-remarkというものもあるが，これはmdxには非対応．
       // また，画像の読み込みができなかった
