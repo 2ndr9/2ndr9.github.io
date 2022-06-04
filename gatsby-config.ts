@@ -4,7 +4,7 @@ import path from "path";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `portfolio`,
-    siteUrl: `https://2ndr9.com/github.io/portfolio`,
+    siteUrl: `https://2ndr9.github.io/`,
   },
   plugins: [
     // tailwind用
