@@ -1,5 +1,5 @@
 import type { GatsbyConfig } from "gatsby";
-import path from "path";
+// import path from "path";
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -15,7 +15,8 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
-        path: path.join("./", "content"),
+        // path: path.join("./", "content"),
+        path: `${__dirname}/content/`,
       },
     },
     // Sharp(画像圧縮ライブラリ)を使えるようにする．低レイヤーのプラグイン
