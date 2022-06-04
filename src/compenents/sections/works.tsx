@@ -28,7 +28,7 @@ const Works = () => {
               github
               image {
                 childImageSharp {
-                  gatsbyImageData(width: 150)
+                  gatsbyImageData(blurredOptions: {}, width: 150)
                 }
               }
               position
