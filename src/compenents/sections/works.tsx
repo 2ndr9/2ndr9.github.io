@@ -1,10 +1,11 @@
 import React from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, useStaticQuery } from "gatsby";
-import GithubIcon from "../icons/github";
-import ExternalIcon from "../icons/external";
-import { GatsbyImage, getImage, getImageData, IGatsbyImageData } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Section from "./common";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Works = () => {
   const data = useStaticQuery<GatsbyTypes.WorksSectionQuery>(graphql`
@@ -62,13 +63,13 @@ const Works = () => {
               <div className="flex justify-around w-full my-7 absolute bottom-0 left-1/2 -translate-x-1/2 ">
                 {frontmatter!.github && (
                   <a href={frontmatter!.github} target="_blank" rel="noopener noreferrer">
-                    <GithubIcon></GithubIcon>
+                    <FontAwesomeIcon className="text-2xl" icon={faGithub} />
                   </a>
                 )}
 
                 {frontmatter!.external && (
                   <a href={frontmatter!.external} target="_blank" rel="noopener noreferrer">
-                    <ExternalIcon></ExternalIcon>
+                    <FontAwesomeIcon className="text-2xl" icon={faArrowUpRightFromSquare} />
                   </a>
                 )}
               </div>
