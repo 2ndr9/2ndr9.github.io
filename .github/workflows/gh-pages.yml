@@ -14,21 +14,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 14
           cache: "npm"
-
-      - name: debug
-        run: |
-          ls
-          ls content
-          npm -v
-          node -v
-          node node-debug.js
 
       - name: install and build
         run: |
           npm ci
           npm run build
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/source' }}
