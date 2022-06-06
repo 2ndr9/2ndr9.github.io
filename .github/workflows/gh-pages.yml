@@ -1,4 +1,4 @@
-name: Gatsby Publish
+name: github pages
 
 on:
   push:
@@ -6,10 +6,32 @@ on:
       - source
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 16
+          cache: "npm"
+
+      - name: debug
+        run: |
+          ls
+          ls content
+          npm -v
+          node -v
+
+      - name: install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/source' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: main
+          publish_dir: ./public
