@@ -259,6 +259,8 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
+  readonly port: Maybe<Scalars['Int']>;
+  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly jsxRuntime: Maybe<Scalars['String']>;
@@ -803,6 +805,8 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -2060,6 +2064,8 @@ type SiteFieldsEnum =
   | 'siteMetadata.title'
   | 'siteMetadata.description'
   | 'siteMetadata.siteUrl'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2195,6 +2201,8 @@ type SiteGroupConnection_groupArgs = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  readonly port: Maybe<IntQueryOperatorInput>;
+  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -3540,10 +3548,18 @@ type MdxSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type GetSectionTitlesQueryVariables = Exact<{ [key: string]: never; }>;
+type PrivacyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type GetSectionTitlesQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'order' | 'sectionID'>> }> } };
+type PrivacyQuery = { readonly mdx: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title'>> }
+  )> };
+
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type AboutSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3556,14 +3572,6 @@ type AboutSectionQuery = { readonly mdx: Maybe<(
     )> }
   )> };
 
-type CarrerSectionQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type CarrerSectionQuery = { readonly mdx: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
-  )> };
-
 type CertificationSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3572,10 +3580,10 @@ type CertificationSectionQuery = { readonly mdx: Maybe<(
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
   )> };
 
-type ContactSectionQueryVariables = Exact<{ [key: string]: never; }>;
+type CarrerSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ContactSectionQuery = { readonly mdx: Maybe<(
+type CarrerSectionQuery = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
   )> };
@@ -3588,12 +3596,17 @@ type SkillsSectionQuery = { readonly mdx: Maybe<(
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
   )> };
 
-type PrivacyQueryVariables = Exact<{ [key: string]: never; }>;
+type GetSectionTitlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PrivacyQuery = { readonly mdx: Maybe<(
+type GetSectionTitlesQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'order' | 'sectionID'>> }> } };
+
+type ContactSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ContactSectionQuery = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title'>> }
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
   )> };
 
 type WorksSectionQueryVariables = Exact<{ [key: string]: never; }>;
