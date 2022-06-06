@@ -23,6 +23,7 @@ jobs:
           ls content
           npm -v
           node -v
+          node node-debug.js
 
       - name: install and build
         run: |
