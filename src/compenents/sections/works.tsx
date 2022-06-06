@@ -57,7 +57,7 @@ const Works = () => {
                   alt="aboutImage"
                 />
               </div>
-              <p className="text-base my-7 prose prose-sm">
+              <p className="text-base my-6 prose prose-sm">
                 <MDXRenderer>{body}</MDXRenderer>
               </p>
               <div className="flex justify-around w-full my-7 absolute bottom-0 left-1/2 -translate-x-1/2 ">
