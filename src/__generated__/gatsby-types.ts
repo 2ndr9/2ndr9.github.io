@@ -3548,6 +3548,11 @@ type MdxSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
 type PrivacyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3555,11 +3560,6 @@ type PrivacyQuery = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title'>> }
   )> };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type GetSectionTitlesQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -25,6 +25,7 @@ const config: GatsbyConfig = {
             },
           },
         ],
+        plugins: [{ resolve: "gatsby-remark-images" }],
       },
     },
     // tailwind用
