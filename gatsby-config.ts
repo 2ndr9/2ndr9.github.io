@@ -7,26 +7,10 @@ const config: GatsbyConfig = {
     siteUrl: `https://2ndr9.github.io/`,
   },
   plugins: [
-    // tailwind用
-    "gatsby-plugin-postcss",
-    // grapqhのtype生成
-    `gatsby-plugin-typegen`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `content`,
-        // path: path.join("./", "content"),
-        path: `${__dirname}/content/`,
-      },
-    },
     // Sharp(画像圧縮ライブラリ)を使えるようにする．低レイヤーのプラグイン
     "gatsby-plugin-sharp",
     // 画像読み込みでImageSharpノードを生成する
     `gatsby-transformer-sharp`,
-    // gatsyby-imageが非推奨になり，こちらが推奨
-    // <GatsbyImage>などが使える
-    `gatsby-plugin-image`,
-    `gatsby-remark-images`,
     {
       // gatsby-transformer-remarkというものもあるが，これはmdxには非対応．
       // また，画像の読み込みができなかった
@@ -43,6 +27,22 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    // tailwind用
+    "gatsby-plugin-postcss",
+    // grapqhのtype生成
+    `gatsby-plugin-typegen`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        // path: path.join("./", "content"),
+        path: `${__dirname}/content/`,
+      },
+    },
+    // gatsyby-imageが非推奨になり，こちらが推奨
+    // <GatsbyImage>などが使える
+    `gatsby-plugin-image`,
+    `gatsby-remark-images`,
   ],
 };
 

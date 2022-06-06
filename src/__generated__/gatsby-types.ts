@@ -259,8 +259,6 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
-  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly jsxRuntime: Maybe<Scalars['String']>;
@@ -595,30 +593,11 @@ type ImageSharpResize = {
   readonly originalName: Maybe<Scalars['String']>;
 };
 
-type GatsbyImageFormat =
-  | 'NO_CHANGE'
-  | 'auto'
-  | 'jpg'
-  | 'png'
-  | 'webp'
-  | 'avif';
-
-type GatsbyImageLayout =
-  | 'fixed'
-  | 'fullWidth'
-  | 'constrained';
-
-type GatsbyImagePlaceholder =
-  | 'dominantColor'
-  | 'tracedSVG'
-  | 'blurred'
-  | 'none';
-
 type MdxFrontmatter = {
   readonly title: Scalars['String'];
-  readonly image: Maybe<ReadonlyArray<Maybe<File>>>;
   readonly visible: Maybe<Scalars['Boolean']>;
   readonly position: Maybe<Scalars['Int']>;
+  readonly image: Maybe<File>;
   readonly sectionID: Maybe<Scalars['String']>;
   readonly order: Maybe<Scalars['Int']>;
   readonly external: Maybe<Scalars['String']>;
@@ -678,6 +657,25 @@ type Mdx_headingsArgs = {
 type Mdx_tableOfContentsArgs = {
   maxDepth: Maybe<Scalars['Int']>;
 };
+
+type GatsbyImageFormat =
+  | 'NO_CHANGE'
+  | 'auto'
+  | 'jpg'
+  | 'png'
+  | 'webp'
+  | 'avif';
+
+type GatsbyImageLayout =
+  | 'fixed'
+  | 'fullWidth'
+  | 'constrained';
+
+type GatsbyImagePlaceholder =
+  | 'dominantColor'
+  | 'tracedSVG'
+  | 'blurred'
+  | 'none';
 
 type Query = {
   readonly file: Maybe<File>;
@@ -805,8 +803,6 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -1126,17 +1122,13 @@ type MdxFilterInput = {
 
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly image: Maybe<FileFilterListInput>;
   readonly visible: Maybe<BooleanQueryOperatorInput>;
   readonly position: Maybe<IntQueryOperatorInput>;
+  readonly image: Maybe<FileFilterInput>;
   readonly sectionID: Maybe<StringQueryOperatorInput>;
   readonly order: Maybe<IntQueryOperatorInput>;
   readonly external: Maybe<StringQueryOperatorInput>;
   readonly github: Maybe<StringQueryOperatorInput>;
-};
-
-type FileFilterListInput = {
-  readonly elemMatch: Maybe<FileFilterInput>;
 };
 
 type FileFilterInput = {
@@ -1434,7 +1426,8 @@ type FileFieldsEnum =
   | 'childrenMdx.rawBody'
   | 'childrenMdx.fileAbsolutePath'
   | 'childrenMdx.frontmatter.title'
-  | 'childrenMdx.frontmatter.image'
+  | 'childrenMdx.frontmatter.visible'
+  | 'childrenMdx.frontmatter.position'
   | 'childrenMdx.frontmatter.image.sourceInstanceName'
   | 'childrenMdx.frontmatter.image.absolutePath'
   | 'childrenMdx.frontmatter.image.relativePath'
@@ -1473,8 +1466,6 @@ type FileFieldsEnum =
   | 'childrenMdx.frontmatter.image.childrenMdx'
   | 'childrenMdx.frontmatter.image.id'
   | 'childrenMdx.frontmatter.image.children'
-  | 'childrenMdx.frontmatter.visible'
-  | 'childrenMdx.frontmatter.position'
   | 'childrenMdx.frontmatter.sectionID'
   | 'childrenMdx.frontmatter.order'
   | 'childrenMdx.frontmatter.external'
@@ -1533,7 +1524,8 @@ type FileFieldsEnum =
   | 'childMdx.rawBody'
   | 'childMdx.fileAbsolutePath'
   | 'childMdx.frontmatter.title'
-  | 'childMdx.frontmatter.image'
+  | 'childMdx.frontmatter.visible'
+  | 'childMdx.frontmatter.position'
   | 'childMdx.frontmatter.image.sourceInstanceName'
   | 'childMdx.frontmatter.image.absolutePath'
   | 'childMdx.frontmatter.image.relativePath'
@@ -1572,8 +1564,6 @@ type FileFieldsEnum =
   | 'childMdx.frontmatter.image.childrenMdx'
   | 'childMdx.frontmatter.image.id'
   | 'childMdx.frontmatter.image.children'
-  | 'childMdx.frontmatter.visible'
-  | 'childMdx.frontmatter.position'
   | 'childMdx.frontmatter.sectionID'
   | 'childMdx.frontmatter.order'
   | 'childMdx.frontmatter.external'
@@ -2070,8 +2060,6 @@ type SiteFieldsEnum =
   | 'siteMetadata.title'
   | 'siteMetadata.description'
   | 'siteMetadata.siteUrl'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2207,8 +2195,6 @@ type SiteGroupConnection_groupArgs = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
-  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -3322,7 +3308,8 @@ type MdxFieldsEnum =
   | 'rawBody'
   | 'fileAbsolutePath'
   | 'frontmatter.title'
-  | 'frontmatter.image'
+  | 'frontmatter.visible'
+  | 'frontmatter.position'
   | 'frontmatter.image.sourceInstanceName'
   | 'frontmatter.image.absolutePath'
   | 'frontmatter.image.relativePath'
@@ -3403,8 +3390,6 @@ type MdxFieldsEnum =
   | 'frontmatter.image.internal.mediaType'
   | 'frontmatter.image.internal.owner'
   | 'frontmatter.image.internal.type'
-  | 'frontmatter.visible'
-  | 'frontmatter.position'
   | 'frontmatter.sectionID'
   | 'frontmatter.order'
   | 'frontmatter.external'
@@ -3555,23 +3540,18 @@ type MdxSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type PrivacyQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PrivacyQuery = { readonly mdx: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title'>> }
-  )> };
-
 type GetSectionTitlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type GetSectionTitlesQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'order' | 'sectionID'>> }> } };
+
+type CarrerSectionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CarrerSectionQuery = { readonly mdx: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
+  )> };
 
 type AboutSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3580,16 +3560,8 @@ type AboutSectionQuery = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly frontmatter: Maybe<(
       Pick<MdxFrontmatter, 'title' | 'sectionID'>
-      & { readonly image: Maybe<ReadonlyArray<Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>>> }
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
     )> }
-  )> };
-
-type CarrerSectionQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type CarrerSectionQuery = { readonly mdx: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'sectionID'>> }
   )> };
 
 type CertificationSectionQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3623,9 +3595,17 @@ type WorksSectionQuery = { readonly mdx: Maybe<{ readonly frontmatter: Maybe<Pic
         Pick<Mdx, 'body'>
         & { readonly frontmatter: Maybe<(
           Pick<MdxFrontmatter, 'title' | 'external' | 'github' | 'position'>
-          & { readonly image: Maybe<ReadonlyArray<Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>>> }
+          & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
         )> }
       ) }> } };
+
+type PrivacyQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PrivacyQuery = { readonly mdx: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title'>> }
+  )> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
