@@ -45,11 +45,15 @@ const Works = () => {
 
   return (
     <Section sectionID={sectionID!} title={title}>
-      <div className="grid grid-cols-2 grid-rows-none ">
+      <ul className="overflow-x-scroll flex">
         {works.map((work, key) => {
           const { body, frontmatter } = work.node;
           return (
-            <div key={key} className={`border-b-2 m-2 p-3 relative pb-14`} style={{ order: frontmatter?.position }}>
+            <li
+              key={key}
+              className={`mr-8 p-1 relative pb-14 flex-shrink-0 w-4/6 md:w-2/4 lg:w-2/5`}
+              style={{ order: frontmatter?.position }}
+            >
               <div className="text-3xl mb-7 text-center">{frontmatter!.title}</div>
               <div className="text-center">
                 <GatsbyImage
@@ -73,10 +77,10 @@ const Works = () => {
                   </a>
                 )}
               </div>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </Section>
   );
 };
