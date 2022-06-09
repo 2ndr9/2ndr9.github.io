@@ -43,19 +43,24 @@ const Works = () => {
   const { title, sectionID } = data!.mdx!.frontmatter!;
   const works = data.allMdx.edges;
 
+  // positionに小数点を許容したいが，cssのorderプロパティは小数点を受け付けないため，
+  // frontmatter__positionでsortして取得したworksの自然数の順番を保持する．
+  let position_order_count = 0;
+
   return (
     <Section sectionID={sectionID!} title={title}>
       <ul className="overflow-x-scroll flex">
         {works.map((work, key) => {
+          position_order_count++;
           const { body, frontmatter } = work.node;
           return (
             <li
               key={key}
               className={`mr-8 p-1 relative pb-14 flex-shrink-0 w-4/6 md:w-2/4 lg:w-2/5`}
-              style={{ order: frontmatter?.position }}
+              style={{ order: position_order_count }}
             >
               <div className="text-3xl mb-7 text-center">{frontmatter!.title}</div>
-              <div className="text-center">
+              <div className="text-center h-36 flex items-center justify-center">
                 <GatsbyImage
                   image={getImage(work.node.frontmatter?.image?.childImageSharp?.gatsbyImageData!)!}
                   alt="aboutImage"
