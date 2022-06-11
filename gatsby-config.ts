@@ -34,8 +34,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `content`,
-        path: `${__dirname}/content/`,
+        name: `contents`,
+        path: `${__dirname}/contents/`,
       },
     },
     // gatsyby-imageが非推奨になり，こちらが推奨
