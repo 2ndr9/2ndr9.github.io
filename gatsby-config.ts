@@ -42,6 +42,13 @@ const config: GatsbyConfig = {
     // <GatsbyImage>などが使える
     `gatsby-plugin-image`,
     `gatsby-remark-images`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/images/favicon.png",
+      },
+    },
   ],
 };
 
