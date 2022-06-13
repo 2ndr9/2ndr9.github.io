@@ -20,7 +20,7 @@ jobs:
       - name: create dot env file
         run: |
           touch .env.production
-          echo "GATSBY_TRACKING_ID=${{GATSBY_TRACKING_ID}}" >> .env.production
+          echo "GATSBY_TRACKING_ID=${{secrets.GATSBY_TRACKING_ID}}" >> .env.production
 
       - name: install and build
         run: |
