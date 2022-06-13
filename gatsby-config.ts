@@ -1,5 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `portfolio`,
@@ -10,6 +14,15 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sharp",
     // 画像読み込みでImageSharpノードを生成する
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [process.env.GATSBY_TRACKING_ID],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
     {
       // gatsby-transformer-remarkというものもあるが，これはmdxには非対応．
       // また，画像の読み込みができなかった

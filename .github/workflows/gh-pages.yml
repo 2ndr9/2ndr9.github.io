@@ -15,7 +15,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: "npm"
+          # cache: "npm"
+
+      - name: create dot env file
+      - shell: bash
+        run: |
+          touch .env.production
+          echo "GATSBY_TRACKING_ID=${{GATSBY_TRACKING_ID}}" >> .env.production
 
       - name: install and build
         run: |
