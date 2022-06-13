@@ -18,7 +18,6 @@ jobs:
           # cache: "npm"
 
       - name: create dot env file
-      - shell: bash
         run: |
           touch .env.production
           echo "GATSBY_TRACKING_ID=${{GATSBY_TRACKING_ID}}" >> .env.production
