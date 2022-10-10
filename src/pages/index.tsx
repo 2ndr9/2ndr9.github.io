@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../compenents/layout";
 import About from "../compenents/sections/about";
-import Carrer from "../compenents/sections/carrer";
+import Career from "../compenents/sections/career";
 import Works from "../compenents/sections/works";
 import "../../gatsby-browser";
 import Skills from "../compenents/sections/skills";
@@ -23,7 +23,7 @@ const IndexPage = () => {
       <Header></Header>
       <About></About>
       <Works></Works>
-      <Carrer></Carrer>
+      <Career></Career>
       <Skills></Skills>
       <Certification></Certification>
       <Contact></Contact>

@@ -3,10 +3,10 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { graphql, useStaticQuery } from "gatsby";
 import Section from "./common";
 
-const Carrer = () => {
-  const data = useStaticQuery<GatsbyTypes.CarrerSectionQuery>(graphql`
-    query CarrerSection {
-      mdx(fileAbsolutePath: { regex: "/sections/carrer/carrer.mdx/" }) {
+const Career = () => {
+  const data = useStaticQuery<GatsbyTypes.careerSectionQuery>(graphql`
+    query careerSection {
+      mdx(fileAbsolutePath: { regex: "/sections/career/career.mdx/" }) {
         body
         frontmatter {
           title
@@ -27,4 +27,4 @@ const Carrer = () => {
   );
 };
 
-export default Carrer;
+export default Career;
