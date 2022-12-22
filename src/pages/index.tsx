@@ -24,10 +24,10 @@ const IndexPage = () => {
       <Header></Header>
       <About></About>
       <Publications></Publications>
-      <Works></Works>
-      <Career></Career>
-      <Skills></Skills>
       <Certification></Certification>
+      <Career></Career>
+      <Works></Works>
+      <Skills></Skills>
       <Contact></Contact>
       <Footer></Footer>
     </Layout>
