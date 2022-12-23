@@ -78,9 +78,11 @@ const Publications = () => {
             {underline(frontmatter.authors!)}
             <p>
               {frontmatter.title}
-              <a href={frontmatter.pdf} target="_blank" rel="noopener noreferrer" className="ml-3">
-                <FontAwesomeIcon className="text-2xl" icon={faFilePdf} />
-              </a>
+              {frontmatter.pdf == "" || (
+                <a href={frontmatter.pdf} target="_blank" rel="noopener noreferrer" className="ml-3">
+                  <FontAwesomeIcon className="text-2xl" icon={faFilePdf} />
+                </a>
+              )}
             </p>
             <p>{frontmatter.conference_name}</p>
           </li>
