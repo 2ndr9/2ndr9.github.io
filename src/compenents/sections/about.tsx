@@ -30,9 +30,9 @@ const About = () => {
       <div className="text-center">
         <GatsbyImage className="rounded-full w-52 z-0" image={getImage(gatsbyImageData)!} alt="aboutImage" />
       </div>
-      <p className="my-auto prose prose-base mt-10 min-w-full">
+      <div className="my-auto prose prose-base mt-10 min-w-full">
         <MDXRenderer>{body}</MDXRenderer>
-      </p>
+      </div>
     </Section>
   );
 };
