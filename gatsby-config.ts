@@ -33,7 +33,7 @@ const config: GatsbyConfig = {
             // Processes images in markdown so they can be used in the production build.
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 200,
             },
           },
         ],
