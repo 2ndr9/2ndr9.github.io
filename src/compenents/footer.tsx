@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 const Footer = () => {
   return (
-    <footer className="border-t-2">
+    <footer>
       <div className="flex justify-center my-8">
         <Link className="text-lg px-4 m-3" to="/" aria-label="home">
           home
