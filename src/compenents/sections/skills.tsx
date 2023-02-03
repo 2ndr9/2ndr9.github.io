@@ -20,9 +20,9 @@ const Skills = () => {
 
   return (
     <Section sectionID={frontmatter!.sectionID!} title={frontmatter!.title!}>
-      <p className="my-auto prose prose-base mt-10 min-w-full">
+      <div className="my-auto prose prose-sm mt-10 min-w-full">
         <MDXRenderer>{body}</MDXRenderer>
-      </p>
+      </div>
     </Section>
   );
 };
