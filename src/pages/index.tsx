@@ -8,6 +8,7 @@ import "../../gatsby-browser";
 import Skills from "../compenents/sections/skills";
 import Certification from "../compenents/sections/certification";
 import Contact from "../compenents/sections/contact";
+import SchoolActivities from "../compenents/sections/schoolActivities";
 import Footer from "../compenents/footer";
 import Header from "../compenents/header";
 
@@ -29,6 +30,7 @@ const IndexPage = () => {
       <Works></Works>
       <Skills></Skills>
       <Contact></Contact>
+      <SchoolActivities></SchoolActivities>
       <Footer></Footer>
     </Layout>
   );
