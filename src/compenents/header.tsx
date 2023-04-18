@@ -21,10 +21,10 @@ const Header = () => {
 
   return (
     <header className="border-b-2 text-center">
-      <nav className="py-5 lg:py-0 lg:my-8 overflow-x-auto">
+      <nav className="my-5 overflow-x-auto whitespace-nowrap">
         {data.allMdx.nodes.map((n, key) => {
           return (
-            <Link className="text-lg px-2 lg:px-4 lg:m-3" key={key} to={`/#${n.frontmatter!.sectionID!}`}>
+            <Link className="text-lg px-4" key={key} to={`/#${n.frontmatter!.sectionID!}`}>
               {n.frontmatter!.title}
             </Link>
           );
