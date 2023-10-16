@@ -6,9 +6,9 @@ import Header from "../components/header";
 
 import { Helmet } from "react-helmet";
 import { graphql, PageProps } from "gatsby";
-import Section from "../components/sections/common";
+import Section from "../components/section";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Works from "../components/sections/works";
+import Works from "../components/works";
 
 export const query = graphql`
   query IndexPage {
