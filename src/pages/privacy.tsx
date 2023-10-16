@@ -1,8 +1,8 @@
 import { graphql, PageProps } from "gatsby";
 import * as React from "react";
-import Layout from "../compenents/layout";
+import Layout from "../components/layout";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Footer from "../compenents/footer";
+import Footer from "../components/footer";
 
 const PrivacyPage: React.FC<PageProps<GatsbyTypes.PrivacyQuery>> = ({ data }) => {
   return (

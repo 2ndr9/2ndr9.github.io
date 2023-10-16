@@ -4,10 +4,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 const Header = () => {
   const data = useStaticQuery<GatsbyTypes.GetSectionTitlesQuery>(graphql`
     query GetSectionTitles {
-      allMdx(
-        filter: { frontmatter: { sectionID: { regex: "/.*/" } } }
-        sort: { fields: frontmatter___order, order: ASC }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/index/" } }, sort: { fields: frontmatter___order, order: ASC }) {
         nodes {
           frontmatter {
             title

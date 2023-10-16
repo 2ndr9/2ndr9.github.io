@@ -1,20 +1,58 @@
 import * as React from "react";
-import Layout from "../compenents/layout";
-import About from "../compenents/sections/about";
-import Publications from "../compenents/sections/publications";
-import Career from "../compenents/sections/career";
-import Works from "../compenents/sections/works";
+import Layout from "../components/layout";
 import "../../gatsby-browser";
-import Skills from "../compenents/sections/skills";
-import Certification from "../compenents/sections/certification";
-import Contact from "../compenents/sections/contact";
-import SchoolActivities from "../compenents/sections/schoolActivities";
-import Footer from "../compenents/footer";
-import Header from "../compenents/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 import { Helmet } from "react-helmet";
+import { graphql, PageProps } from "gatsby";
+import Section from "../components/section";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import Works from "../components/works";
 
-const IndexPage = () => {
+export const query = graphql`
+  query IndexPage {
+    sections: allMdx(
+      filter: { fileAbsolutePath: { regex: "/index/" } }
+      sort: { fields: [frontmatter___order], order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                gatsbyImageData(blurredOptions: {}, width: 250)
+              }
+            }
+            sectionID
+            order
+          }
+          body
+        }
+      }
+    }
+    works: allMdx(
+      filter: { fileAbsolutePath: { regex: "/works/" }, frontmatter: { visible: { eq: true } } }
+      sort: { fields: [frontmatter___position], order: ASC }
+    ) {
+      edges {
+        node {
+          body
+          frontmatter {
+            position
+          }
+        }
+      }
+    }
+  }
+`;
+
+const IndexPage: React.FC<PageProps<GatsbyTypes.IndexPageQuery>> = ({ data }) => {
+  const sections = data.sections.edges;
+  const works = data.works.edges;
+
   return (
     <Layout>
       <Helmet>
@@ -22,16 +60,27 @@ const IndexPage = () => {
         <title>Riku Tsunoda's portfolio</title>
         <meta name="description" content="This page is top of my portfolio." />
       </Helmet>
-      <Header></Header>
-      <About></About>
-      <Publications></Publications>
-      <Certification></Certification>
-      <Career></Career>
-      <Works></Works>
-      <Skills></Skills>
-      <SchoolActivities></SchoolActivities>
-      <Contact></Contact>
-      <Footer></Footer>
+
+      <Header />
+
+      {sections.map((section) => {
+        const child =
+          section.node.frontmatter!.sectionID === "works" ? (
+            <Works works={works} />
+          ) : (
+            <div className="prose min-w-full">
+              <MDXRenderer>{section.node.body}</MDXRenderer>
+            </div>
+          );
+
+        return (
+          <Section sectionID={section.node.frontmatter!.sectionID!} title={section.node.frontmatter!.title!}>
+            {child}
+          </Section>
+        );
+      })}
+
+      <Footer />
     </Layout>
   );
 };
