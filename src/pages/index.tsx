@@ -1,14 +1,14 @@
 import * as React from "react";
-import Layout from "../compenents/layout";
+import Layout from "../components/layout";
 import "../../gatsby-browser";
-import Footer from "../compenents/footer";
-import Header from "../compenents/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 import { Helmet } from "react-helmet";
 import { graphql, PageProps } from "gatsby";
-import Section from "../compenents/sections/common";
+import Section from "../components/sections/common";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Works from "../compenents/sections/works";
+import Works from "../components/sections/works";
 
 export const query = graphql`
   query IndexPage {
