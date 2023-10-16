@@ -10,3 +10,9 @@ html {
 #about .gatsby-resp-image-image {
   border-radius: 9999px;
 }
+
+/* skills などの remote image のため */
+img {
+  display: block;
+  margin: auto;
+}
