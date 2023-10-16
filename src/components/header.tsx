@@ -18,10 +18,10 @@ const Header = () => {
 
   return (
     <header className="border-b-2 text-center">
-      <nav className="my-5 overflow-x-auto whitespace-nowrap">
+      <nav className="py-5 overflow-x-auto whitespace-nowrap">
         {data.allMdx.nodes.map((n, key) => {
           return (
-            <Link className="text-lg px-4" key={key} to={`/#${n.frontmatter!.sectionID!}`}>
+            <Link className="py-5 text-lg px-4 hover:bg-gray-200" key={key} to={`/#${n.frontmatter!.sectionID!}`}>
               {n.frontmatter!.title}
             </Link>
           );
